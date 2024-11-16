@@ -1,7 +1,7 @@
 package repo
 
 import (
-	"github.com/li1553770945/sheepim-online-service/biz/internal/domain"
+	"github.com/li1553770945/sheepim-push-proxy-service/biz/internal/domain"
 	"gorm.io/gorm"
 )
 

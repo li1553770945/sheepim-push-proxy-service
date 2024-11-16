@@ -1,10 +1,10 @@
 package converter
 
 import (
-	"github.com/li1553770945/sheepim-online-service/biz/constant"
-	"github.com/li1553770945/sheepim-online-service/biz/internal/domain"
-	"github.com/li1553770945/sheepim-online-service/kitex_gen/base"
-	"github.com/li1553770945/sheepim-online-service/kitex_gen/project"
+	"github.com/li1553770945/sheepim-push-proxy-service/biz/constant"
+	"github.com/li1553770945/sheepim-push-proxy-service/biz/internal/domain"
+	"github.com/li1553770945/sheepim-push-proxy-service/kitex_gen/base"
+	"github.com/li1553770945/sheepim-push-proxy-service/kitex_gen/project"
 )
 
 func AssembleSuccessBaseResp() *base.BaseResp {

@@ -1,7 +1,7 @@
 package domain
 
 import (
-	"github.com/li1553770945/sheepim-online-service/biz/internal/do"
+	"github.com/li1553770945/sheepim-push-proxy-service/biz/internal/do"
 	"time"
 )
 

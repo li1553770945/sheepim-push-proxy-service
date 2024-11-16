@@ -1,6 +1,6 @@
 package repo
 
-import "github.com/li1553770945/sheepim-online-service/biz/internal/domain"
+import "github.com/li1553770945/sheepim-push-proxy-service/biz/internal/domain"
 
 func (Repo *Repository) RemoveProject(projectID int32) error {
 	err := Repo.DB.Delete(&domain.ProjectEntity{}, projectID).Error

@@ -2,7 +2,7 @@ package config
 
 import (
 	"fmt"
-	"github.com/li1553770945/sheepim-online-service/biz/constant"
+	"github.com/li1553770945/sheepim-push-proxy-service/biz/constant"
 	"gopkg.in/yaml.v3"
 	"os"
 	"path/filepath"

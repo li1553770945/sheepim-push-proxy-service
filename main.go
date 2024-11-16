@@ -23,8 +23,8 @@ import (
 	"github.com/kitex-contrib/obs-opentelemetry/provider"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	etcd "github.com/kitex-contrib/registry-etcd"
-	"github.com/li1553770945/sheepim-online-service/biz/infra/container"
-	"github.com/li1553770945/sheepim-online-service/kitex_gen/project/projectservice"
+	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/container"
+	"github.com/li1553770945/sheepim-push-proxy-service/kitex_gen/project/projectservice"
 	"net"
 	"os"
 )
