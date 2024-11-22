@@ -1,6 +1,0 @@
-{"level":"info","msg":"KITEX: server listen at addr=192.168.6.241:8896","time":"2024-11-22T17:55:04+08:00"}
-{"level":"info","msg":"start keepalive lease 694d9352de35f797 for etcd registry","time":"2024-11-22T17:55:05+08:00"}
-{"level":"info","msg":"放入消息成功:hello","span_id":"1ae1db86f856e35e","time":"2024-11-22T17:55:10+08:00","trace_flags":"01","trace_id":"526c723f5db27aeaf78ae2a1f71e2754"}
-{"level":"info","msg":"放入消息成功:hello","span_id":"1f7d5e3c2fb5d010","time":"2024-11-22T17:55:14+08:00","trace_flags":"01","trace_id":"526c723f5db27aeaf78ae2a1f71e2754"}
-{"level":"info","msg":"放入消息成功:hello玩儿去我让","span_id":"c22f1c46d6c93645","time":"2024-11-22T17:55:19+08:00","trace_flags":"01","trace_id":"526c723f5db27aeaf78ae2a1f71e2754"}
-{"level":"info","msg":"stop keep register service kitex/registry-etcd/sheepim-push-proxy-service/192.168.6.241:8896","time":"2024-11-22T18:00:17+08:00"}
