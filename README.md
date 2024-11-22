@@ -1,8 +1,8 @@
-# sheepim用户服务
+# sheepim消息推送代理
 
 ## 初始化项目
 ```bash
-kitex -module "github.com/li1553770945/sheepim-push-proxy-service" -service sheepim-push-proxy-service idl/project.thrift
+kitex -module "github.com/li1553770945/sheepim-push-proxy-service" -service sheepim-push-proxy-service idl/push-proxy.thrift
 cd biz/infra/container
 wire
 ```

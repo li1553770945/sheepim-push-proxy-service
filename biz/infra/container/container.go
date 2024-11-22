@@ -2,6 +2,7 @@ package container
 
 import (
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/config"
+	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/kafka"
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/log"
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/trace"
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/internal/service"
@@ -9,10 +10,11 @@ import (
 )
 
 type Container struct {
-	Trace          *trace.TraceStruct
-	Logger         *log.TraceLogger
-	Config         *config.Config
-	ProjectService project.IProjectService
+	Trace            *trace.TraceStruct
+	Logger           *log.TraceLogger
+	KafkaClient      *kafka.KafkaClient
+	Config           *config.Config
+	PushProxyService service.IPushProxyService
 }
 
 var APP *Container
@@ -34,14 +36,15 @@ func InitGlobalContainer(env string) {
 func NewContainer(config *config.Config,
 	logger *log.TraceLogger,
 	traceStruct *trace.TraceStruct,
-
-	projectService project.IProjectService,
+	kafkaClient *kafka.KafkaClient,
+	pushProxyService service.IPushProxyService,
 ) *Container {
 	return &Container{
-		Config:         config,
-		Logger:         logger,
-		ProjectService: projectService,
-		Trace:          traceStruct,
+		Config:           config,
+		Logger:           logger,
+		KafkaClient:      kafkaClient,
+		PushProxyService: pushProxyService,
+		Trace:            traceStruct,
 	}
 
 }

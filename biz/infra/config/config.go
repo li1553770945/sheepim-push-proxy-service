@@ -29,12 +29,17 @@ type DatabaseConfig struct {
 	Port     int32  `yaml:"port"`
 }
 
+type KafkaConfig struct {
+	Brokers []string `yaml:"brokers"`  // Kafka Broker 地址列表
+	Topic   string   `yaml:"topic"`    // 主题名称
+	GroupID string   `yaml:"group-id"` // 消费者组 ID
+}
 type Config struct {
 	Env                 string
 	ServerConfig        ServerConfig        `yaml:"server"`
 	OpenTelemetryConfig OpenTelemetryConfig `yaml:"open-telemetry"`
-	DatabaseConfig      DatabaseConfig      `yaml:"database"`
 	EtcdConfig          EtcdConfig          `yaml:"etcd"`
+	KafkaConfig         KafkaConfig         `yaml:"kafka"`
 }
 
 func GetConfig(env string) *Config {

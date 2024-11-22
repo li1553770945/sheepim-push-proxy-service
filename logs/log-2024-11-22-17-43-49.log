@@ -1,0 +1,5 @@
+{"level":"info","msg":"KITEX: server listen at addr=192.168.6.241:8896","time":"2024-11-22T17:43:49+08:00"}
+{"level":"info","msg":"start keepalive lease 694d9352de35f6e4 for etcd registry","time":"2024-11-22T17:43:50+08:00"}
+{"level":"error","msg":"KITEX: processing request error, remoteService=personal-connect-service, remoteAddr=192.168.6.241:64743, error=biz error: 消息队列消息发送失败:dial tcp [2409:8a20:e20:c644:f4b6:817e:a613:9c55]:9002: connect: connection refused","time":"2024-11-22T17:43:52+08:00"}
+{"level":"error","msg":"KITEX: processing request error, remoteService=personal-connect-service, remoteAddr=192.168.6.241:65419, error=biz error: 消息队列消息发送失败:dial tcp [2409:8a20:e20:c644:f4b6:817e:a613:9c55]:9002: connect: connection refused","time":"2024-11-22T17:46:16+08:00"}
+{"level":"info","msg":"stop keep register service kitex/registry-etcd/sheepim-push-proxy-service/192.168.6.241:8896","time":"2024-11-22T17:49:27+08:00"}

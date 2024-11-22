@@ -6,16 +6,13 @@ require (
 	github.com/apache/thrift v0.21.0
 	github.com/cloudwego/kitex v0.11.3
 	github.com/google/wire v0.6.0
-	github.com/hertz-contrib/obs-opentelemetry/provider v0.3.0
 	github.com/kitex-contrib/obs-opentelemetry v0.2.7
 	github.com/kitex-contrib/obs-opentelemetry/logging/logrus v0.0.0-20241108060226-a2d88c8d88e9
 	github.com/kitex-contrib/registry-etcd v0.2.5
-	github.com/li1553770945/sheepim-user-service v0.0.0-20241109174451-f4bf6bdeb5d2
+	github.com/segmentio/kafka-go v0.4.47
 	go.opentelemetry.io/otel v1.20.0
 	go.opentelemetry.io/otel/trace v1.20.0
 	gopkg.in/yaml.v3 v3.0.1
-	gorm.io/driver/postgres v1.5.9
-	gorm.io/gorm v1.25.12
 )
 
 require (
@@ -29,7 +26,6 @@ require (
 	github.com/cloudwego/fastpb v0.0.5 // indirect
 	github.com/cloudwego/frugal v0.2.0 // indirect
 	github.com/cloudwego/gopkg v0.1.2 // indirect
-	github.com/cloudwego/hertz v0.9.0 // indirect
 	github.com/cloudwego/iasm v0.2.0 // indirect
 	github.com/cloudwego/localsession v0.0.2 // indirect
 	github.com/cloudwego/netpoll v0.6.4 // indirect
@@ -46,18 +42,14 @@ require (
 	github.com/google/pprof v0.0.0-20240727154555-813a5fbdbec8 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.18.1 // indirect
 	github.com/iancoleman/strcase v0.2.0 // indirect
-	github.com/jackc/pgpassfile v1.0.0 // indirect
-	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
-	github.com/jackc/pgx/v5 v5.5.5 // indirect
-	github.com/jackc/puddle/v2 v2.2.1 // indirect
 	github.com/jhump/protoreflect v1.8.2 // indirect
-	github.com/jinzhu/inflection v1.0.0 // indirect
-	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
+	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/gls v0.0.0-20220109145502-612d0167dce5 // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
+	github.com/pierrec/lz4/v4 v4.1.15 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.9.2 // indirect
 	github.com/stretchr/testify v1.9.0 // indirect

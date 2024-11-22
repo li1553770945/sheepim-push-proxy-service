@@ -20,11 +20,10 @@ import (
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
 	"github.com/cloudwego/kitex/server"
-	"github.com/kitex-contrib/obs-opentelemetry/provider"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	etcd "github.com/kitex-contrib/registry-etcd"
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/container"
-	"github.com/li1553770945/sheepim-push-proxy-service/kitex_gen/project/projectservice"
+	"github.com/li1553770945/sheepim-push-proxy-service/kitex_gen/push_proxy/pushproxyservice"
 	"net"
 	"os"
 )
@@ -39,12 +38,29 @@ func main() {
 
 	serviceName := App.Config.ServerConfig.ServiceName
 
-	defer func(p provider.OtelProvider, ctx context.Context) {
+	defer func(container *container.Container) {
+		p := container.Trace.Provider
+		ctx := context.Background()
 		err := p.Shutdown(ctx)
 		if err != nil {
-			klog.Fatalf("server stopped with error:%s", err)
+			klog.Errorf("server stopped with error:%s", err)
 		}
-	}(App.Trace.Provider, context.Background())
+
+		if container.KafkaClient.Producer != nil {
+			err := container.KafkaClient.Producer.Close()
+			if err != nil {
+				klog.Errorf("kafka生产者关闭失败%s", err)
+			}
+		}
+
+		if container.KafkaClient.Consumer != nil {
+			err := container.KafkaClient.Consumer.Close()
+			if err != nil {
+				klog.Errorf("kafka消费者关闭失败%s", err)
+			}
+		}
+
+	}(App)
 
 	addr, err := net.ResolveTCPAddr("tcp", App.Config.ServerConfig.ListenAddress)
 	if err != nil {
@@ -55,8 +71,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	svr := projectservice.NewServer(
-		new(ProjectServiceImpl),
+	svr := pushproxyservice.NewServer(
+		new(PushProxyServiceImpl),
 		server.WithSuite(tracing.NewServerSuite()),
 		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{ServiceName: serviceName}),
 		server.WithRegistry(r),

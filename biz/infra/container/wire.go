@@ -6,7 +6,7 @@ package container
 import (
 	"github.com/google/wire"
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/config"
-	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/database"
+	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/kafka"
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/log"
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/trace"
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/internal/repo"
@@ -20,13 +20,12 @@ func GetContainer(env string) *Container {
 		config.GetConfig,
 		log.InitLog,
 		trace.InitTrace,
-
+		kafka.NewKafkaClient,
 		//repo
 		repo.NewRepository,
-		database.NewDatabase,
 
 		//service
-		project.NewProjectService,
+		service.NewPushProxyService,
 
 		NewContainer,
 	))

@@ -1,28 +1,21 @@
 package repo
 
 import (
-	"github.com/li1553770945/sheepim-push-proxy-service/biz/internal/domain"
-	"gorm.io/gorm"
+	"context"
+	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/kafka"
+	"github.com/li1553770945/sheepim-push-proxy-service/kitex_gen/push_proxy"
 )
 
 type IRepository interface {
-	SaveProject(project *domain.ProjectEntity) error
-	RemoveProject(projectID int32) error
-	GetProject(projectID int32) (*domain.ProjectEntity, error)
-	GetProjectsNum() (int64, error)
-	GetProjects(from int32, end int32, order string, status int32) (*[]domain.ProjectEntity, error)
+	PushMessage(ctx context.Context, messageObj *push_proxy.PushMessageReq) error
 }
 
 type Repository struct {
-	DB *gorm.DB
+	KafkaClient *kafka.KafkaClient
 }
 
-func NewRepository(db *gorm.DB) IRepository {
-	err := db.AutoMigrate(&domain.ProjectEntity{})
-	if err != nil {
-		panic("迁移用户模型失败：" + err.Error())
-	}
+func NewRepository(kafkaClient *kafka.KafkaClient) IRepository {
 	return &Repository{
-		DB: db,
+		KafkaClient: kafkaClient,
 	}
 }

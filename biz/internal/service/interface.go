@@ -1,22 +1,21 @@
-package project
+package service
 
 import (
 	"context"
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/internal/repo"
-	"github.com/li1553770945/sheepim-push-proxy-service/kitex_gen/project"
+	"github.com/li1553770945/sheepim-push-proxy-service/kitex_gen/push_proxy"
 )
 
-type ProjectService struct {
+type PushProxyService struct {
 	Repo repo.IRepository
 }
 
-type IProjectService interface {
-	GetProjects(ctx context.Context, req *project.ProjectsReq) (*project.ProjectsResp, error)
-	GetProjectNum(ctx context.Context) (*project.ProjectNumResp, error)
+type IPushProxyService interface {
+	PushMessage(ctx context.Context, req *push_proxy.PushMessageReq) (resp *push_proxy.PushMessageResp, err error)
 }
 
-func NewProjectService(repo repo.IRepository) IProjectService {
-	return &ProjectService{
+func NewPushProxyService(repo repo.IRepository) IPushProxyService {
+	return &PushProxyService{
 		Repo: repo,
 	}
 }
