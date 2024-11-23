@@ -22,10 +22,12 @@ import (
 	"github.com/cloudwego/kitex/server"
 	"github.com/kitex-contrib/obs-opentelemetry/tracing"
 	etcd "github.com/kitex-contrib/registry-etcd"
+	"github.com/kitex-contrib/registry-etcd/retry"
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/container"
 	"github.com/li1553770945/sheepim-push-proxy-service/kitex_gen/push_proxy/pushproxyservice"
 	"net"
 	"os"
+	"time"
 )
 
 func main() {
@@ -67,7 +69,12 @@ func main() {
 		panic("设置监听地址出错")
 	}
 
-	r, err := etcd.NewEtcdRegistry(App.Config.EtcdConfig.Endpoint) // r should not be reused.
+	retryConfig := retry.NewRetryConfig(
+		retry.WithMaxAttemptTimes(0),
+		retry.WithObserveDelay(20*time.Second),
+		retry.WithRetryDelay(5*time.Second),
+	)
+	r, err := etcd.NewEtcdRegistryWithRetry(App.Config.EtcdConfig.Endpoint, retryConfig) // r should not be reused.
 	if err != nil {
 		panic(err)
 	}
