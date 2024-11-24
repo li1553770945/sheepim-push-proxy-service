@@ -5,6 +5,7 @@ import (
 	"github.com/li1553770945/sheepim-push-proxy-service/biz/infra/config"
 	"github.com/segmentio/kafka-go"
 	"log"
+	"time"
 )
 
 // KafkaClient 封装了 Kafka 的生产者和消费者
@@ -60,9 +61,10 @@ func NewKafkaClient(cfg *config.Config) *KafkaClient {
 	}
 	// 创建生产者
 	producer := kafka.Writer{
-		Addr:     kafka.TCP(conf.Brokers...),
-		Topic:    conf.Topic,
-		Balancer: &kafka.LeastBytes{},
+		Addr:         kafka.TCP(conf.Brokers...),
+		Topic:        conf.Topic,
+		Balancer:     &kafka.LeastBytes{},
+		BatchTimeout: 10 * time.Millisecond,
 	}
 
 	// 创建消费者
